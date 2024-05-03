@@ -1,0 +1,18 @@
+.nav-link {
+  border-radius: 2em;
+  background: rgb(72, 0, 255);
+  margin: 3px;
+  text-decoration: none !important;
+}
+.nav-link:hover {
+  border-radius: 2em;
+  background: rgb(116, 72, 225);
+  margin: 3px;
+  text-decoration: none !important;
+}
+.nav-text {
+  font-weight: 100 !important;
+  font-style: obliques !important;
+  color: white;
+  text-decoration: none;
+}
