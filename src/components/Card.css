@@ -2,11 +2,8 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  /* background-color: #242424; */
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -17,10 +14,61 @@
   font-weight: 600 !important;
 }
 .wild {
-    height: 400px;
-    overflow: scroll;
-    padding: 0 !important;
-  }
-  svg {
-    color: yellow;
-  }
+  height: 400px;
+  overflow: scroll;
+  padding: 0 !important;
+}
+
+.you {
+  height: 100%;
+  background-color: rgba(80, 51, 160, 0.3) !important;
+}
+svg {
+  color: yellow;
+}
+.main-card {
+  border: 2px solid rgb(117, 95, 203) !important;
+  border-radius: 25px !important;
+  width: 80% !important;
+  height: 500px;
+  overflow: scroll;
+}
+.colore {
+  background-color: rgb(36, 27, 161) !important;
+}
+.card-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 !important;
+  height: 50px;
+  background-color: rgba(7, 1, 53, 0.8) !important;
+}
+.card-footer {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  height: 50px;
+  background-color: rgba(7, 1, 53, 0.8) !important;
+}
+.trtr {
+  border-color: rgb(170, 169, 193, 0.4);
+  border-style: solid;
+  border-bottom-width: 1px !important;
+}
+.row-profile {
+  background-color: rgb(36, 27, 161) !important;
+}
+.table {
+  width: 100% !important;
+  --bs-table-color: rgb(215, 215, 225);
+}
+th {
+  font-weight: 300 !important;
+}
+/* this targets table background color */
+.table > :not(caption) > * > * {
+  background-color: rgb(79, 15, 79, 0.1) !important;
+}

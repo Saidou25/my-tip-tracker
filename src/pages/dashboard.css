@@ -1,10 +1,9 @@
 .container-fluid {
-  background-color: black;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 10%;
+  padding-top: 10%;
 }
 .container-roundup {
   padding: 2%;
@@ -14,44 +13,4 @@
 .paragraph,
 .name {
   text-align: center;
-}
-.main-card {
-  border: 2px solid rgb(72, 0, 255) !important;
-  border-radius: 25px !important;
-  /* padding: 3% !important; */
-  width: 80% !important;
-
-  height: 500px;
-  overflow: scroll;
-  background-color: transparent !important;
-}
-.card-title {
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  height: 50px;
-}
-
-.table {
-  width: 100% !important;
-  --bs-table-color: rgb(215, 215, 225);
-  color: blue !important;
-}
-th { 
-  font-weight: 200 !important;
-}
-/* this targets table background color */
-.table > :not(caption) > * > * {
-  background-color: rgb(79, 15, 79, 0.1) !important;
-}
-
-.card-footer {
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  height: 50px;
 }

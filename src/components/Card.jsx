@@ -9,71 +9,70 @@ const Card = ({ title, cardBodyTemplate, footer }) => {
     if (templateTitle === "weekly") {
       return (
         <>
-        <table className="table p-0 m-0 g-0">
-          <thead className="here">
-            <tr>
-              <th className="hum">
-                <p>date</p>
-              </th>
-              <th className="hum">
-                <p>shift</p>
-              </th>
-              <th className="hum">tips brut</th>
-              <th className="hum">tips net</th>
-            </tr>
-            {fields &&
-              fields.map((field, index) => (
-                <tr
-                  key={index}
-                >
-                  <th>
-                    <span>{field.day}</span><br />
-                    <span>{field.date}</span>
-                  </th>
-                  <th>{field.shift}</th>
-                  <th>{field.brut}</th>
-                 <th><LuBadgeDollarSign syle={{ color: "yellow" }} /><br />
-                  <span>{field.net}</span></th>
-                </tr>
-              ))}
-          </thead>
-        </table>
-        </> );
+          <table className="table p-0 m-0 g-0">
+            <thead className="here">
+              <tr className="trtr">
+                <th className="hum">
+                  <p>date</p>
+                </th>
+                <th className="hum">
+                  <p>shift</p>
+                </th>
+                <th className="hum">tips brut</th>
+                <th className="hum">tips net</th>
+              </tr>
+              {fields &&
+                fields.map((field, index) => (
+                  <tr key={index} className="trtr">
+                    <th>
+                      <span>{field.day}</span>
+                      <br />
+                      <span>{field.date}</span>
+                    </th>
+                    <th>{field.shift}</th>
+                    <th>{field.brut}</th>
+                    <th>
+                      <LuBadgeDollarSign syle={{ color: "yellow" }} />
+                      <br />
+                      <span>{field.net}</span>
+                    </th>
+                  </tr>
+                ))}
+            </thead>
+          </table>
+        </>
+      );
     }
 
     if (templateTitle === "profileTemplate") {
       return (
-        <div className="row px-5 g-0">
-          {fields &&
-            fields.map((field) => (
-              <>
-                <p className="col-12" key={field.workPlace}>
-                  workPlace: {field.workPlace}
-                </p>
-                <p className="col-12" key={field.position}>
-                  position: {field.position}
-                </p>
-                <p className="col-12" key={field.firstname}>
-                  firstname: {field.firstname}
-                </p>
-              </>
-            ))}
-        </div>
+        <>
+          <div className="row you p-5 g-0">
+            {fields &&
+              fields.map((field) => (
+                <section key={field.workPlace} className="here">
+                  <p className="col-12">workPlace: {field.workPlace}</p>
+                  <p className="col-12">position: {field.position}</p>
+                  <p className="col-12">firstname: {field.firstname}</p>
+                </section>
+              ))}
+          </div>
+        </>
       );
     }
 
     if (templateTitle === "tipsForm") {
       return (
-        <div className="row g-0">
-          <form className="form px-5">
+        <div className="row you tips g-0">
+          <form className="form p-5">
             {fields &&
               fields.map((field) => (
                 <div className="col-12" key={field.label}>
-                  <label className="form-label mb-3" name={field.label}>
+                  <label className="form-label here mb-3" name={field.label}>
                     {field.label}
                   </label>
                   <br />
-                  <input className="mb-3" placeholder={field.placeholder} />
+                  <input inputMode="numeric" type="number" className="mb-3" />
                   <br />
                 </div>
               ))}

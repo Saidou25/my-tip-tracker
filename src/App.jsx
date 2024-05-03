@@ -4,6 +4,7 @@ import EnterTips from "./pages/enterTips";
 import Dashboard from "./pages/dashboard";
 import LandingPage from "./pages/landingPage";
 import "bootswatch/dist/cyborg/bootstrap.min.css";
+import "./index.css"
 
 function App() {
   return (

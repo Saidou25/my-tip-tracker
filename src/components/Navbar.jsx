@@ -4,10 +4,7 @@ import "./Navbar.css";
 
 const Navbar = () => {
   return (
-    <div
-      className="container-nav"
-      style={{ display: "flex", justifyContent: "center", marginTop: "15%" }}
-    >
+    <div className="container-nav">
       <ul className="nav">
         <li className="nav-link">
           <NavLink className="nav-text" to="/enterTips">
