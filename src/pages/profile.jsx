@@ -1,10 +1,15 @@
+import { NavLink } from "react-router-dom";
+import { profileTemplate } from "../data";
 import Card from "../components/Card";
 import Navbar from "../components/Navbar";
-import { profileTemplate } from "../data";
+import "./profile.css";
 
 const Profile = () => {
   return (
     <div className="grad1">
+      {/* <NavLink className="nav-item" to="/">
+        <div className="logofor-pages">GF</div>
+      </NavLink> */}
       <Navbar />
       <div className="container-fluid g-0">
         <div className="container-roundup">

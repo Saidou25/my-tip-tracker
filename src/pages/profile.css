@@ -1,0 +1,14 @@
+.nav-item {
+  display: flex;
+  align-items: center;
+}
+
+.logofor-pages {
+  border: solid;
+  border-width: 2px;
+  border-radius: 50%;
+  padding: 1%;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 200 !important;
+  margin: 2%;
+}
