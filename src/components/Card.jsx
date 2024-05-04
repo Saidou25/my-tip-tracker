@@ -1,5 +1,7 @@
 import React from "react";
-import { LuBadgeDollarSign } from "react-icons/lu";
+import { FaSackDollar } from "react-icons/fa6";
+import { GiCoins } from "react-icons/gi";
+import Button from "./Button";
 import "./Card.css";
 
 const Card = ({ title, cardBodyTemplate, footer }) => {
@@ -30,10 +32,12 @@ const Card = ({ title, cardBodyTemplate, footer }) => {
                       <span>{field.date}</span>
                     </th>
                     <th>{field.shift}</th>
-                    <th>{field.brut}</th>
                     <th>
-                      <LuBadgeDollarSign syle={{ color: "yellow" }} />
-                      <br />
+                      <FaSackDollar />
+                      {field.brut}
+                    </th>
+                    <th>
+                      <GiCoins />
                       <span>{field.net}</span>
                     </th>
                   </tr>
@@ -64,19 +68,30 @@ const Card = ({ title, cardBodyTemplate, footer }) => {
     if (templateTitle === "tipsForm") {
       return (
         <div className="row you tips g-0">
-          <form className="form p-5">
+          <form className="form px-5">
+            <br />
             {fields &&
               fields.map((field) => (
                 <div className="col-12" key={field.label}>
                   <label className="form-label here mb-3" name={field.label}>
-                    {field.label}
+                    {field.label}:
                   </label>
                   <br />
-                  <input inputMode="numeric" type="number" className="mb-3" />
+                  <br />
+                  {field.label === "tips brut" ? <FaSackDollar /> : <GiCoins />}
+                  <input
+                    inputMode="numeric"
+                    type="number"
+                    className="tips-input mb-3 mx-2"
+                    placeholder="please enter tips..."
+                    style={{ fontStyle: "oblique", paddingLeft: "3%" }}
+                  />
+                  <br />
                   <br />
                 </div>
               ))}
-            <button className="button my-3">save</button>
+
+            <Button type="submit">save</Button>
           </form>
         </div>
       );
@@ -86,9 +101,9 @@ const Card = ({ title, cardBodyTemplate, footer }) => {
   return (
     <>
       <div className="card main-card bg-transparent">
-        <div className="card-title">{title}</div>
+        <div className="card-title">Day</div>
         <div className="card-body wild">{renderFields(fields)}</div>
-        <div className="card-footer">{footer}</div>
+        <div className="card-footer">Today's date</div>
       </div>
     </>
   );

@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 import { profileTemplate } from "../data";
 import Card from "../components/Card";
 import Navbar from "../components/Navbar";

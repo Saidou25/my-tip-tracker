@@ -78,6 +78,10 @@ th {
 .card-footer {
   animation: rotationfade 0.4s forwards;
 }
+.tips-input {
+  border-radius: 2em;
+  background-color: rgba(255, 255, 255, 0.693);
+}
 @keyframes rotationmove {
   50% {
     transform: rotateY(90deg);
