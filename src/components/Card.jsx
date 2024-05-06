@@ -8,7 +8,7 @@ const Card = ({ title, cardBodyTemplate, footer }) => {
   const { templateTitle, fields } = cardBodyTemplate;
 
   const renderFields = (fields) => {
-    // switch case here 
+    // switch case here
     if (templateTitle === "dashboard") {
       return <CardBodyDashboard fields={fields} />;
     }

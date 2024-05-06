@@ -2,7 +2,7 @@
 import { profile } from "../data";
 import Card from "../components/Card";
 import Navbar from "../components/Navbar";
-// import "./profile.css";
+import "./Profile.css";
 
 const Profile = () => {
   return (
@@ -14,7 +14,7 @@ const Profile = () => {
       <div className="container-fluid g-0">
         <div className="container-roundup">
           <h1 className="name">Hello Sy</h1>
-          <p className="paragraph">Any update?</p>
+          <span className="paragraph">Any update?</span>
         </div>
         <Card
           title="Profile title"

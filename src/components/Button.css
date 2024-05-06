@@ -4,7 +4,9 @@
   border-radius: 2em !important;
   background-color: rgba(211, 35, 241, 0.542) !important;
   width: 100%;
-  margin-top: 9%;
+  margin-top: 2%;
+  padding: 1% !important;
+  font-size: 1.8rem !important;
 }
 .button:hover {
   border: solid;
@@ -15,5 +17,5 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 5%;
+  margin-top: 7%;
 }

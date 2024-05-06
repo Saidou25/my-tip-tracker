@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
-import EnterTips from "./pages/EnterTips";
 import Profile from "./pages/Profile";
 import Dashboard from "./pages/Dashboard";
+import EnterTips from "./pages/EnterTips";
 import "bootswatch/dist/cyborg/bootstrap.min.css";
 import "./index.css";
 

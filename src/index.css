@@ -1,21 +1,19 @@
-/* :root { 
-  min-height: 100vh;
-  background-color: rgb(8, 8, 8); /* For browsers that do not support gradients */
-  /* background-image: linear-gradient(30deg, rgb(72, 0, 255), rgb(4, 4, 4)); */
-/* } */
  /* :root  {
     height: 100vh;
     background-color: rgb(8, 8, 8); /* For browsers that do not support gradients */
     /* background-image: linear-gradient(0deg, rgb(72, 0, 255), rgb(4, 4, 4)); */
-  
-/* } */ 
-/* body {
-  height: 100vh;
-    background-color: rgb(8, 8, 8); /* For browsers that do not support gradients */
+  body {
+    font-size: 1.7rem;
+  }
+ /* }  */
+/* body { */
+  /* height: 100vh; */
+    /* background-color: rgb(8, 8, 8); For browsers that do not support gradients */
     /* background-image: linear-gradient(0deg, rgb(72, 0, 255), rgb(4, 4, 4)); */
   
-/* } */ 
-/* :root {
+ /* }   */
+/*  
+ :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -43,7 +41,7 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: 320px;
+  min-width: 100vw;
   min-height: 100vh;
 }
 
@@ -82,4 +80,4 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-} */
+}  */ 

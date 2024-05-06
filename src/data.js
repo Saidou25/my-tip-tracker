@@ -69,8 +69,8 @@ const profile = {
 const tipsForm = {
   templateTitle: "tipsForm",
   fields: [
-    { type: "text", label: "tips brut", placeholder: "enter tips brut" },
-    { type: "text", label: "tips net", placeholder: "enter tips net" },
+    { type: "text", label: "Tips brut", placeholder: "enter tips brut" },
+    { type: "text", label: "Tips net", placeholder: "enter tips net" },
   ],
 };
 export { dashboardData, profile, tipsForm };

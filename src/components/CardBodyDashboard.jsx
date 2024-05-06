@@ -4,34 +4,40 @@ import "./Card.css";
 
 const CardBodyDashboard = ({ fields }) => {
   return (
-    <table className="table p-0 m-0 g-0">
+    <table className="you g-0 m-0 p-0">
       <thead className="here">
-        <tr className="trtr">
-          <th className="hum">
-            <p>date</p>
+        <tr className="trtr py-2">
+          <th className="hum px-3">
+            <span>date</span>
           </th>
           <th className="hum">
-            <p>shift</p>
+            <span>shift</span>
           </th>
-          <th className="hum">tips brut</th>
-          <th className="hum">tips net</th>
+          <th className="hum">brut</th>
+          <th className="hum">net</th>
         </tr>
         {fields &&
           fields.map((field, index) => (
             <tr key={index} className="trtr">
-              <th>
+              <th className="hum-item px-3">
                 <span>{field.day}</span>
                 <br />
                 <span>{field.date}</span>
               </th>
-              <th>{field.shift}</th>
+              <th className="hum-item">{field.shift}</th>
               <th>
-                <FaSackDollar />
-                {field.brut}
+                <FaSackDollar className="hum-icon" />
+                <span className="ps-3">{field.brut}</span>
               </th>
-              <th>
-                <GiCoins />
-                <span>{field.net}</span>
+              <th 
+              // style={{ display: "flex", alignItems: "center"}}
+              >
+                <GiCoins className="hum-icon" />
+                <span className="ps-3"
+                // style={{ display: "flex", alignItems: "center"}}
+                >
+                  {field.net}
+                </span>
               </th>
             </tr>
           ))}

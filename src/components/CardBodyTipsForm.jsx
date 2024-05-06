@@ -1,6 +1,7 @@
 import { FaSackDollar } from "react-icons/fa6";
 import { GiCoins } from "react-icons/gi";
 import Button from "./Button";
+
 import "./Card.css";
 
 const CardBodyTipsForm = ({ fields }) => {
@@ -16,7 +17,11 @@ const CardBodyTipsForm = ({ fields }) => {
               </label>
               <br />
               <br />
-              {field.label === "tips brut" ? <FaSackDollar /> : <GiCoins />}
+              {field.label === "Tips brut" ? (
+                <FaSackDollar className="hum-icon-form" />
+              ) : (
+                <GiCoins className="hum-icon-form" />
+              )}
               <input
                 inputMode="numeric"
                 type="number"

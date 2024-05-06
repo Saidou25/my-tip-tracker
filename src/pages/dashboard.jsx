@@ -11,7 +11,7 @@ const Dashboard = () => {
       <div className="container-fluid g-0">
         <div className="container-roundup">
           <h1 className="name">Hello Sy</h1>
-          <p className="paragraph">So far this week...</p>
+          <span className="paragraph">So far this week...</span>
         </div>
         <Card
           className="p-0 m-0 g-0"

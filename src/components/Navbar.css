@@ -1,23 +1,27 @@
 .container-nav {
-display: flex;
-justify-content: center;
-padding-top: 15%;
+  display: flex;
+  justify-content: center;
+  padding-top: 15%;
 }
 .nav-link {
   border-radius: 2em;
   background-color: rgb(72, 0, 255) !important;
   margin: 3px;
   text-decoration: none !important;
+  padding: 0 !important;
 }
-.nav-link:hover {
-  border-radius: 2em;
-  background: rgb(116, 72, 225) !important;
-  margin: 3px;
-  text-decoration: none !important;
-}
+
 .nav-text {
+  border-radius: 2em;
+  background-color: rgb(72, 0, 255) !important;
   font-weight: 100 !important;
-  font-style: obliques !important;
-  color: white;
+  color: white !important;
   text-decoration: none;
+  transition: 0.25s !important;
+}
+.nav-text:hover {
+  background: rgb(116, 72, 225) !important;
+  font-weight: 100 !important;
+  color: white;
+  transition: 0.25s !important;
 }
