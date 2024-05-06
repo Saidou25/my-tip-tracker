@@ -1,5 +1,5 @@
-const weekly = {
-  templateTitle: "weekly",
+const dashboardData = {
+  templateTitle: "dashboard",
   fields: [
     {
       date: "02/23/2024",
@@ -53,8 +53,8 @@ const weekly = {
   ],
 };
 
-const profileTemplate = {
-  templateTitle: "profileTemplate",
+const profile = {
+  templateTitle: "profile",
   fields: [
     {
       type: "text",
@@ -73,4 +73,4 @@ const tipsForm = {
     { type: "text", label: "tips net", placeholder: "enter tips net" },
   ],
 };
-export { weekly, profileTemplate, tipsForm };
+export { dashboardData, profile, tipsForm };

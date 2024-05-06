@@ -1,7 +1,8 @@
-import { weekly } from "../data";
+import { dashboardData } from "../data";
 import Navbar from "../components/Navbar";
 import Card from "../components/Card";
-import "./dashboard.css";
+
+import "./Dashboard.css";
 
 const Dashboard = () => {
   return (
@@ -16,7 +17,7 @@ const Dashboard = () => {
           className="p-0 m-0 g-0"
           title="Dashboard title"
           footer="Dashboard footer"
-          cardBodyTemplate={weekly}
+          cardBodyTemplate={dashboardData}
         />
       </div>
     </div>

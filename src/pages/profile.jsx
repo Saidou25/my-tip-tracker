@@ -1,8 +1,8 @@
 // import { NavLink } from "react-router-dom";
-import { profileTemplate } from "../data";
+import { profile } from "../data";
 import Card from "../components/Card";
 import Navbar from "../components/Navbar";
-import "./profile.css";
+// import "./profile.css";
 
 const Profile = () => {
   return (
@@ -19,7 +19,7 @@ const Profile = () => {
         <Card
           title="Profile title"
           footer="Profile footer"
-          cardBodyTemplate={profileTemplate}
+          cardBodyTemplate={profile}
         />
       </div>
     </div>

@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Profile from "./pages/profile";
-import EnterTips from "./pages/enterTips";
-import Dashboard from "./pages/dashboard";
-import LandingPage from "./pages/landingPage";
+import LandingPage from "./pages/LandingPage";
+import EnterTips from "./pages/EnterTips";
+import Profile from "./pages/Profile";
+import Dashboard from "./pages/Dashboard";
 import "bootswatch/dist/cyborg/bootstrap.min.css";
-import "./index.css"
+import "./index.css";
 
 function App() {
   return (
