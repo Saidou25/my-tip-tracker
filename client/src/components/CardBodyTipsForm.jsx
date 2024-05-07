@@ -5,6 +5,7 @@ import Button from "./Button";
 import "./Card.css";
 
 const CardBodyTipsForm = ({ fields }) => {
+  
   return (
     <div className="row you tips g-0" data-testid="card-body-tips-form">
       <form className="form px-5">
@@ -13,10 +14,11 @@ const CardBodyTipsForm = ({ fields }) => {
           fields.map((field) => (
             <div className="col-12" key={field.label}>
               <label
-                data-testid="label"
+                data-testid={`enterTipsForm-label-${field.label}`}
                 htmlFor={field.label}
                 className="form-label here mb-3"
                 name={field.label}
+                id={field.label}
               >
                 {field.label}:
               </label>

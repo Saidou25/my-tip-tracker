@@ -15,10 +15,10 @@ import Button from './Button';
 //   expect(mockData.feature).toEqual(expect.any(Boolean));
 //   expect(mockData.date).toEqual(expect.any(Date));
 // });
-test("renders <Button/> in the Dom", () => {
+test("renders <Button/> in the DOM", () => {
     render(<Button />);
     const btnElement = screen.getByRole("button")
-    expect(btnElement).toBeInTheDecument();
+    expect(btnElement).toBeInTheDocument();
 })
 
 
