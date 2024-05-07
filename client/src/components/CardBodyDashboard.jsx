@@ -29,15 +29,9 @@ const CardBodyDashboard = ({ fields }) => {
                 <FaSackDollar className="hum-icon" />
                 <span className="ps-3">{field.brut}</span>
               </th>
-              <th 
-              // style={{ display: "flex", alignItems: "center"}}
-              >
+              <th>
                 <GiCoins className="hum-icon" />
-                <span className="ps-3"
-                // style={{ display: "flex", alignItems: "center"}}
-                >
-                  {field.net}
-                </span>
+                <span className="ps-3">{field.net}</span>
               </th>
             </tr>
           ))}

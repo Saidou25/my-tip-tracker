@@ -1,6 +1,7 @@
 import { dashboardData } from "../data";
 import Navbar from "../components/Navbar";
 import Card from "../components/Card";
+import TitleBox from "../components/TitleBox";
 
 import "./Dashboard.css";
 
@@ -9,10 +10,7 @@ const Dashboard = () => {
     <div className="grad1">
       <Navbar />
       <div className="container-fluid g-0">
-        <div className="container-roundup">
-          <h1 className="name">Hello Sy</h1>
-          <span className="paragraph">So far this week...</span>
-        </div>
+        <TitleBox firstname="Sy" />
         <Card
           className="p-0 m-0 g-0"
           title="Dashboard title"

@@ -12,3 +12,5 @@ test('renders card footer /Test footer/ in the <div> with the {footer} as a prop
   const divElement = screen.getByText(/Test footer/i);
   expect(divElement).toBeInTheDocument();
 });
+
+

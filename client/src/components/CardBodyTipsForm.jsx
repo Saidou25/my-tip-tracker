@@ -6,13 +6,14 @@ import "./Card.css";
 
 const CardBodyTipsForm = ({ fields }) => {
   return (
-    <div className="row you tips g-0">
+    <div className="row you tips g-0" data-testid="card-body-tips-form">
       <form className="form px-5">
         <br />
         {fields &&
           fields.map((field) => (
             <div className="col-12" key={field.label}>
               <label
+                data-testid="label"
                 htmlFor={field.label}
                 className="form-label here mb-3"
                 name={field.label}
@@ -27,6 +28,8 @@ const CardBodyTipsForm = ({ fields }) => {
                 <GiCoins className="hum-icon-form" />
               )}
               <input
+                data-testid="input"
+                role="spinbutton"
                 id={field.label}
                 inputMode="numeric"
                 type="number"

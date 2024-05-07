@@ -1,21 +1,20 @@
 import { tipsForm } from "../data";
 import Navbar from "../components/Navbar";
 import Card from "../components/Card";
-
+import TitleBox from "../components/TitleBox";
 
 const EnterTips = () => {
   return (
     <div className="grad1">
       <Navbar />
       <div className="container-fluid g-0">
-        <div className="container-roundup">
-          <h1 className="name">Hello Sy</h1>
-          <span className="paragraph">Ready to enter your tips?</span>
-        </div>
+        <TitleBox firstname="Sy" />
         <Card
+          role="card"
           title="Enter tips title"
           footer="Enter tips footer"
           cardBodyTemplate={tipsForm}
+          data-testid="card-component"
         />
       </div>
     </div>
