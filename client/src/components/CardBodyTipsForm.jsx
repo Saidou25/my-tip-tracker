@@ -3,12 +3,13 @@ import { GiCoins } from "react-icons/gi";
 import Button from "./Button";
 
 import "./Card.css";
+import { useRef } from "react";
 
 const CardBodyTipsForm = ({ fields }) => {
-  
+  const form = useRef();
   return (
     <div className="row you tips g-0" data-testid="card-body-tips-form">
-      <form className="form px-5">
+      <form ref={form} className="form px-5">
         <br />
         {fields &&
           fields.map((field) => (
@@ -18,7 +19,6 @@ const CardBodyTipsForm = ({ fields }) => {
                 htmlFor={field.label}
                 className="form-label here mb-3"
                 name={field.label}
-                id={field.label}
               >
                 {field.label}:
               </label>
