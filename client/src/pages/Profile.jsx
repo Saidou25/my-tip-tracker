@@ -2,6 +2,8 @@
 import { profile } from "../data";
 import Card from "../components/Card";
 import Navbar from "../components/Navbar";
+import TitleBox from "../components/TitleBox";
+
 import "./Profile.css";
 
 const Profile = () => {
@@ -12,10 +14,7 @@ const Profile = () => {
       </NavLink> */}
       <Navbar />
       <div className="container-fluid g-0">
-        <div className="container-roundup">
-          <h1 className="name">Hello Sy</h1>
-          <span className="paragraph">Any update?</span>
-        </div>
+        <TitleBox firstname="Sy" />
         <Card
           title="Profile title"
           footer="Profile footer"

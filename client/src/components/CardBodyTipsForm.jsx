@@ -12,7 +12,11 @@ const CardBodyTipsForm = ({ fields }) => {
         {fields &&
           fields.map((field) => (
             <div className="col-12" key={field.label}>
-              <label className="form-label here mb-3" name={field.label}>
+              <label
+                htmlFor={field.label}
+                className="form-label here mb-3"
+                name={field.label}
+              >
                 {field.label}:
               </label>
               <br />
@@ -23,6 +27,7 @@ const CardBodyTipsForm = ({ fields }) => {
                 <GiCoins className="hum-icon-form" />
               )}
               <input
+                id={field.label}
                 inputMode="numeric"
                 type="number"
                 className="tips-input mb-3 mx-2"
