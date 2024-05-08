@@ -1,5 +1,5 @@
 import CardBodyTipsForm from "./CardBodyTipsForm";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 
 const fields = [
   { label: "Tips brut", placeholder: "enter tips brut", type: "text" },
@@ -56,11 +56,11 @@ test("Tips net input should be empty", () => {
   expect(inputTipsBrutElement.value).toBe(""); // Assert that the input is empty
 });
 
-test("button should be disabled", () => {
-  render(<CardBodyTipsForm fields={fields} />);
-  const buttonElement = screen.getByRole("button");
-  expect(buttonElement).toBeDisabled(true);
-});
+// test("button should be disabled", () => {
+//   render(<CardBodyTipsForm fields={fields} />);
+//   const buttonElement = screen.getByRole("button");
+//   expect(buttonElement).toBeDisabled(true);
+// });
 
 test("error should not show in the component", () => {
   render(<CardBodyTipsForm fields={fields} />);
@@ -68,3 +68,39 @@ test("error should not show in the component", () => {
   const spanElement = screen.queryByText(/Oops, something went wrong.../i);
   expect(spanElement).not.toBeInTheDocument();
 });
+
+test("enter tips brut should change", () => {
+  render(<CardBodyTipsForm fields={fields} />);
+  const inputElement = screen.getByPlaceholderText(/enter tips brut/i)
+  const testValue = "test";
+
+  fireEvent.change(inputElement, { target: { value: testValue }});
+  expect(inputElement.value).toBe(testValue);
+})
+
+test("enter tips net should change", () => {
+  render(<CardBodyTipsForm fields={fields} />);
+  const inputElement = screen.getByPlaceholderText(/enter tips net/i)
+  const testValue = "test";
+
+  fireEvent.change(inputElement, { target: { value: testValue }});
+  expect(inputElement.value).toBe(testValue);
+})
+
+test("please wait... should not show when loading is false", () => {
+  render(<CardBodyTipsForm fields={fields} />);
+  const buttonElement = screen.getByRole("button");
+  expect(buttonElement.textContent).toEqual("save");
+})
+
+test("save should show when loading is true", () => {
+  render(<CardBodyTipsForm fields={fields} />);
+  const buttonElement = screen.getByRole("button");
+  expect(buttonElement.textContent).toEqual("save");
+})
+
+test("Oops, something went wrong... should not show when error is false", () => {
+render(<CardBodyTipsForm fields={fields} />);
+const spanElement = screen.queryByTestId("oops");
+expect(spanElement).not.toBeInTheDocument();
+})

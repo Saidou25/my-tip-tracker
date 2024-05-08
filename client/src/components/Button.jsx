@@ -1,12 +1,25 @@
+// import { CiNoWaitingSign } from "react-icons/ci";
 import "./Button.css";
 
-const Button = ({ children, type, disabled }) => {
+const Button = ({ children, type, disabled, onClick, loading }) => {
   return (
     <div className="btn-div p-0">
-      <button role="button" className="button btn" type={type} disabled={disabled}>
+      <button
+        role="button"
+        className="button btn"
+        type={type}
+        disabled={disabled}
+        onClick={onClick}
+      >
         {/* {children} */}
-        {/* {children} */}
-        button
+
+        {loading ? (
+          <>Please wait...</>
+        ) : (
+          <>
+            <span className="show-save">save</span>
+          </>
+        )}
       </button>
     </div>
   );

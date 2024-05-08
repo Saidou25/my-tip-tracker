@@ -7,9 +7,15 @@ import "./Card.css";
 
 const CardBodyTipsForm = ({ fields }) => {
   const [error, setError] = useState(false);
+  const [tipsBrut, setTipsBrut] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const form = useRef();
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("click");
+  };
   return (
     <div className="row you tips g-0" data-testid="card-body-tips-form">
       <form ref={form} role="form" className="form px-5">
@@ -44,17 +50,25 @@ const CardBodyTipsForm = ({ fields }) => {
                 className="tips-input mb-3 mx-2"
                 placeholder={field.placeholder}
                 style={{ fontStyle: "oblique", paddingLeft: "3%" }}
+                value={tipsBrut}
+                onChange={(e) => setTipsBrut(e.target.value)}
               />
               <br />
               <br />
             </div>
           ))}
-        <Button type="submit" disabled={true}>
+        <Button
+          type="submit"
+          className="button"
+          disabled={false}
+          onClick={handleSubmit}
+          loading={loading}
+        >
           save
         </Button>
         {error && (
-          <span className="text-danger">Oops, something went wrong...</span>
-      )} 
+          <span className="text-danger" data-testid="oops" >Oops, something went wrong...</span>
+        )}
       </form>
     </div>
   );
