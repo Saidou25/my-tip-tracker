@@ -1,3 +1,5 @@
+// data for testing purpose
+
 const dashboardData = {
   templateTitle: "dashboard",
   fields: [
@@ -69,8 +71,8 @@ const profile = {
 const tipsForm = {
   templateTitle: "tipsForm",
   fields: [
-    { type: "text", label: "Tips brut", placeholder: "enter tips brut" },
-    { type: "text", label: "Tips net", placeholder: "enter tips net" },
+    { type: "number", label: "Tips brut", placeholder: "enter tips brut" },
+    { type: "number", label: "Tips net", placeholder: "enter tips net" },
   ],
 };
 export { dashboardData, profile, tipsForm };

@@ -13,19 +13,58 @@ test("<form> should be rendered in CardBodyTipsForm", () => {
   const formElement = screen.getByRole("form");
   expect(formElement).toBeInTheDocument();
 
-  // Checking that the fa icon is rendered in the CardBodyTipsForm
+  // Checking that the <FaSackDollar> is rendered in the CardBodyTipsForm
   const faSackDollar = screen.getByTestId("fa-sack-dollar");
   expect(faSackDollar).toBeInTheDocument();
 
-  // Checking that GiCoins icon is rendered in the CardBodyTipsForm component
+  // Checking that <GiCoins> icon is rendered in the CardBodyTipsForm component
   const faGiCoins = screen.getByTestId("fa-gi-coins");
   expect(faGiCoins).toBeInTheDocument();
 
-  // Check if the input fields are rendered within the CardBodyTipsForm
-  const inputElements = screen.getAllByRole("spinbutton");
+  let inputElements;
+  // Check if the <input> fields are rendered within the CardBodyTipsForm
+  inputElements = screen.getAllByPlaceholderText(/enter tips brut/i);
   expect(inputElements.length).toBeGreaterThan(0);
 
-  // Check if the label fields are redered within the CardBodyTipsForm
-  const labelElement = screen.getByTestId("enterTipsForm-label-Tips brut");
+  // Check if the <input> fields are rendered within the CardBodyTipsForm
+  inputElements = screen.getAllByPlaceholderText(/enter tips net/i);
+  expect(inputElements.length).toBeGreaterThan(0);
+
+  let labelElement;
+  // Check if the <label> fields are redered within the CardBodyTipsForm
+  labelElement = screen.getByLabelText(/Tips brut/i);
   expect(labelElement).toBeInTheDocument();
+
+  // Check if the <label> fields are redered within the CardBodyTipsForm
+  labelElement = screen.getByLabelText(/Tips net/i);
+  expect(labelElement).toBeInTheDocument();
+
+  // Check if the <Button /> is rendered in the CardBodyTipsForm
+  const buttonElement = screen.getByRole("button");
+  expect(buttonElement).toBeInTheDocument();
+});
+
+test("Tips brut input should be empty", () => {
+  render(<CardBodyTipsForm fields={fields} />);
+  const inputTipsBrutElement = screen.getByPlaceholderText("enter tips brut");
+  expect(inputTipsBrutElement.value).toBe("");
+});
+
+test("Tips net input should be empty", () => {
+  render(<CardBodyTipsForm fields={fields} />);
+  const inputTipsBrutElement = screen.getByPlaceholderText("enter tips net");
+  expect(inputTipsBrutElement.value).toBe(""); // Assert that the input is empty
+});
+
+test("button should be disabled", () => {
+  render(<CardBodyTipsForm fields={fields} />);
+  const buttonElement = screen.getByRole("button");
+  expect(buttonElement).toBeDisabled(true);
+});
+
+test("error should not show in the component", () => {
+  render(<CardBodyTipsForm fields={fields} />);
+  // we're using queryByText instead of getByText to handle the case where the text might not be found. This allows the test to pass if the error message is not present in the component. If the error message is present when it shouldn't be, it will fail the test.
+  const spanElement = screen.queryByText(/Oops, something went wrong.../i);
+  expect(spanElement).not.toBeInTheDocument();
 });
