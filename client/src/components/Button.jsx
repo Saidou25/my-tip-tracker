@@ -11,13 +11,11 @@ const Button = ({ children, type, disabled, onClick, loading }) => {
         disabled={disabled}
         onClick={onClick}
       >
-        {/* {children} */}
-
         {loading ? (
           <>Please wait...</>
         ) : (
           <>
-            <span className="show-save">save</span>
+            <span className="show-save">{children}</span>
           </>
         )}
       </button>

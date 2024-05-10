@@ -10,7 +10,16 @@
 .logo {
   border: solid;
   border-radius: 50%;
-  padding: 2%;
+  padding: 1em !important;
+  width: 70px !important;
+  height: 70px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ul-row {
+  list-style-type: none;
+  padding: 0;
 }
 .nav-item {
   text-decoration: none;

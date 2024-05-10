@@ -5,6 +5,12 @@
   align-items: center;
   padding-top: 10%;
 }
+.on-off {
+  color: rgb(148, 205, 240) !important;
+  font-size: 3em;
+  width: 110px;
+  height: 110px;
+}
 .container-roundup {
   margin-bottom: 12%;
   width: 80%;

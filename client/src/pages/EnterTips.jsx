@@ -4,6 +4,7 @@ import Card from "../components/Card";
 import TitleBox from "../components/TitleBox";
 
 const EnterTips = () => {
+
   return (
     <div className="grad1">
       <Navbar />
@@ -11,7 +12,7 @@ const EnterTips = () => {
         <TitleBox firstname="Sy" />
         <Card
           role="card"
-          title="Enter tips title"
+          title={new Date().toString()}
           footer="Enter tips footer"
           cardBodyTemplate={tipsForm}
           data-testid="card-component"

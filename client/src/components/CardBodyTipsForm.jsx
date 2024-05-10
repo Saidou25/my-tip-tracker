@@ -1,8 +1,8 @@
 import { FaSackDollar } from "react-icons/fa6";
 import { GiCoins } from "react-icons/gi";
+import { useRef, useState } from "react";
 import Button from "./Button";
 
-import { useRef, useState } from "react";
 import "./Card.css";
 
 const CardBodyTipsForm = ({ fields }) => {

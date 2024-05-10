@@ -1,20 +1,33 @@
 // data for testing purpose
-
+const signupData = {
+  templateTitle: "signupData",
+  fields: [
+    { type: "email", label: "email", placeholder: "gf@example.com" },
+    { type: "password", label: "password", placeholder: "******" },
+  ],
+};
+const loginData = {
+  templateTitle: "loginData",
+  fields: [
+    { type: "email", label: "email", placeholder: "gf@example.com" },
+    { type: "password", label: "password", placeholder: "******" },
+  ],
+};
 const dashboardData = {
   templateTitle: "dashboard",
   fields: [
     {
       date: "02/23/2024",
       day: "Monday",
-      brut: 220,
-      net: 175,
+      brut: 0,
+      net: 0,
       shift: "dinner",
     },
     {
       date: "02/23/2024",
       day: "Tuesday",
-      brut: 240,
-      net: 205,
+      brut: 0,
+      net: 0,
       shift: "dinner",
     },
     {
@@ -43,12 +56,12 @@ const dashboardData = {
       day: "Saturday",
       brut: 334,
       net: 200,
-      shift: "brunch",
+      shift: "day",
     },
     {
       date: "02/23/2024",
       day: "Sunday",
-      shift: "brunch",
+      shift: "day",
       brut: 350,
       net: 230,
     },
@@ -75,4 +88,10 @@ const tipsForm = {
     { type: "number", label: "Tips net", placeholder: "enter tips net" },
   ],
 };
-export { dashboardData, profile, tipsForm };
+
+const titlesData = [
+  {
+    titles: ["today", "dinner", "tips(brut)", "tips(net)"],
+  },
+];
+export { dashboardData, profile, tipsForm, titlesData, signupData, loginData };
