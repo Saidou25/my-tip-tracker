@@ -72,11 +72,9 @@ const profile = {
   templateTitle: "profile",
   fields: [
     {
-      type: "text",
-      firstname: "Oliva",
-      workPlace: "GF",
-      email: "me@gmail.com",
-      position: "server",
+      type: "",
+      displayName: "",
+      email: "",
     },
   ],
 };
@@ -89,9 +87,16 @@ const tipsForm = {
   ],
 };
 
+const update = {
+  templateTitle: "update",
+  fields: [
+    { type: "text", label: "displayName", placeholder: "display name" },
+  ],
+};
+
 const titlesData = [
   {
     titles: ["today", "dinner", "tips(brut)", "tips(net)"],
   },
 ];
-export { dashboardData, profile, tipsForm, titlesData, signupData, loginData };
+export { dashboardData, profile, tipsForm, titlesData, signupData, loginData, update };

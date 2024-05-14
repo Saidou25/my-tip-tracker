@@ -13,7 +13,6 @@ const CardBodySignup = ({ fields }) => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [formState, setFormState] = useState({
-    username: "",
     email: "",
     password: "",
   });
@@ -34,7 +33,7 @@ const CardBodySignup = ({ fields }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!formState.username || !formState.email || !formState.password) {
+    if (!formState.email || !formState.password) {
       setError("All fields are required...");
       return;
     }
@@ -47,7 +46,7 @@ const CardBodySignup = ({ fields }) => {
         const user = userCredential.user;
         console.log(user);
         setSuccess("Congratulation Your account has been created...");
-        setFormState({ username: "", email: "", password: "" });
+        setFormState({ email: "", password: "" });
         navigate("/login");
       })
       .catch((error) => {
