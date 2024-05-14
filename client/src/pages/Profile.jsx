@@ -10,7 +10,6 @@ import TitleBox from "../components/TitleBox";
 import "./Profile.css";
 
 const Profile = () => {
-
   const currentUser = auth.currentUser;
 
   return (

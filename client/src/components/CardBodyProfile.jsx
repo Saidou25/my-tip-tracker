@@ -1,6 +1,9 @@
+import { auth } from "../firebase";
 import "./Card.css";
 
-const CardBodyProfile = ({ fields, src }) => {
+const CardBodyProfile = ({ src }) => {
+  const currentUser = auth.currentUser;
+
   return (
     <div
     // className="row you p-5 g-0"
@@ -15,9 +18,7 @@ const CardBodyProfile = ({ fields, src }) => {
         </div>
       </div>
       <section className="here">
-        {/* <p className="col-12">workPlace: {user.workPlace}</p> */}
-        {/* <p className="col-12">position: {field.position}</p>
-        // <p className="col-12">firstname: {field.firstname}</p> */}
+        <p className="col-12">firstname: {currentUser?.displayName}</p>
         {/* <p className="col-12">contact: {user.email}</p> */}
       </section>
     </div>
