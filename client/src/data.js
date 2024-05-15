@@ -82,8 +82,8 @@ const profile = {
 const tipsForm = {
   templateTitle: "tipsForm",
   fields: [
-    { type: "number", label: "Tips brut", placeholder: "enter tips brut" },
-    { type: "number", label: "Tips net", placeholder: "enter tips net" },
+    { type: "number", label: "TipsBrut", placeholder: "enter tips brut" },
+    { type: "number", label: "TipsNet", placeholder: "enter tips net" },
   ],
 };
 

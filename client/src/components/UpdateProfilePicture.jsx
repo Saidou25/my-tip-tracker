@@ -11,6 +11,7 @@ import emptyAvatar from "../assets/profileicon.png";
 import Button from "./Button";
 
 const UpdateProfilePicture = ({ handleUrl }) => {
+  
   const [file, setFile] = useState(null);
   const [photoURL, setPhotoURL] = useState(emptyAvatar);
   const [showProgress, setShowProgress] = useState("");
@@ -90,7 +91,7 @@ const UpdateProfilePicture = ({ handleUrl }) => {
         getDownloadURL(uploadTask.snapshot.ref).then((storageRef) => {
           console.log("File available at", storageRef);
           setPhotoURL(storageRef);
-          handleUrl(storageRef);
+          handleUrl(storageRef, file);
         });
       }
     );

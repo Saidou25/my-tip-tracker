@@ -3,7 +3,7 @@ import { GiCoins } from "react-icons/gi";
 import { useEffect, useRef, useState } from "react";
 import { auth, storage } from "../firebase";
 import { updateProfile } from "firebase/auth";
-import { getDownloadURL, ref } from "firebase/storage";
+// import { getDownloadURL, ref } from "firebase/storage";
 
 import UpdateProfilePicture from "./UpdateProfilePicture";
 import Button from "./Button";
@@ -11,19 +11,17 @@ import Button from "./Button";
 import "./Card.css";
 
 const CardBodyUpdate = ({ fields }) => {
-  const [downloadedURL, setDownloadedURL] = useState("");
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
-
   const [formState, setFormState] = useState({
-    workPlace: "",
-    position: "",
     displayName: "",
     email: "",
     photoURL: "",
   });
 
   const form = useRef();
+
+  const currentUser = auth.currentUser;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -40,6 +38,7 @@ const CardBodyUpdate = ({ fields }) => {
     updateProfile(auth.currentUser, {
       displayName: formState.displayName,
       photoURL: formState.photoURL,
+      createdAt: currentUser.metadata.creationTime,
     })
       .then(() => {
         console.log("Profile updated!");
@@ -60,50 +59,7 @@ const CardBodyUpdate = ({ fields }) => {
         [name]: value,
       });
     }
-    setDownloadedURL(storageRef);
   };
-
-  const starsRef = ref(storage, "images/profilepic.jpg");
-  useEffect(() => {
-    // Create a reference with an initial file path and name
-    console.log(starsRef);
-    if (starsRef.path != "images/star-icon-13.jpg") {
-      console.log("no starsRef", starsRef);
-      return;
-    }
-    // Get the download URL
-    getDownloadURL(starsRef)
-      .then((url) => {
-        // Insert url into an <img> tag to "download"
-        if (url) {
-          console.log("url", url);
-        }
-      })
-      .catch((error) => {
-        console.log(error.message);
-        setError("Oops, something went wrong.");
-
-        // A full list of error codes is available at
-        // https://firebase.google.com/docs/storage/web/handle-errors
-        switch (error.code) {
-          case "storage/object-not-found":
-            // File doesn't exist
-            break;
-          case "storage/unauthorized":
-            // User doesn't have permission to access the object
-            break;
-          case "storage/canceled":
-            // User canceled the upload
-            break;
-
-          // ...
-
-          case "storage/unknown":
-            // Unknown error occurred, inspect the server response
-            break;
-        }
-      });
-  }, [starsRef]);
 
   return (
     <div className="row you tips g-0" data-testid="card-body-tips-form">
