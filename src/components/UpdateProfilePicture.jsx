@@ -62,6 +62,8 @@ const UpdateProfilePicture = ({ handleUrl }) => {
           case "running":
             console.log("Upload is running");
             break;
+            default:
+              console.log("Nothing running")
         }
       },
       (error) => {
@@ -84,6 +86,8 @@ const UpdateProfilePicture = ({ handleUrl }) => {
               error.message
             );
             break;
+            default:
+              console.log("Oops, something happened!")
         }
       },
       () => {

@@ -65,7 +65,7 @@ const CardBodyUpdate = ({ fields }) => {
       <UpdateProfilePicture handleUrl={handleUrl} />
       <form
         ref={form}
-        role="form"
+        // role="form"
         className="form px-5"
         onSubmit={handleSubmit}
       >

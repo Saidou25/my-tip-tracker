@@ -16,22 +16,16 @@ const Dashboard = () => {
   const [earnings, setEarnings] = useState([]);
   const [userTipsData, setUserTipsData] = useState([]);
 
-  console.log(userTipsData);
+  // console.log(userTipsData);
 
   const currentUser = auth.currentUser;
 
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/auth.user
       const uid = user.uid;
       console.log(`User with the uid ${uid} is loggedin`);
-
-      // ...
     } else {
       console.log("No user loggedin");
-      // User is signed out
-      // ...
     }
   });
 
@@ -45,7 +39,7 @@ const Dashboard = () => {
     });
     console.log(dataArray);
     // setEarnings(dataArray);
-    console.log("querySnapshot", querySnapshot);
+    // console.log("querySnapshot", querySnapshot);
   };
 
   const logout = () => {
@@ -54,25 +48,24 @@ const Dashboard = () => {
         console.log("Sign-out successful");
       })
       .catch((error) => {
-        // An error happened.
-        console.log("An error happened.");
+        console.log("An error happened.", error.message);
       });
   };
 
   useEffect(() => {
     if (earnings) {
-      console.log(earnings);
+      // console.log(earnings);
       for (let earning of earnings) {
-        console.log("earning", earning);
+        // console.log("earning", earning);
         if (earning.email === currentUser.email) {
-          console.log("it is equal", earning);
+          // console.log("it is equal", earning);
           setUserTipsData(earning);
         } else {
           console.log("it is not equal");
         }
       }
     }
-  }, [earnings]);
+  }, [earnings, currentUser]);
 
   return (
     <div className="grad1">

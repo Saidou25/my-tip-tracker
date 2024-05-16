@@ -30,7 +30,9 @@ const Card = ({ title, cardBodyTemplate = {}, footer, src }) => {
   };
 
   return (
-    <div className="card main-card bg-transparent" role="card">
+    <div className="card main-card bg-transparent" 
+    // role="test-card"
+    >
       <div className="card-title p-5">{title}</div>
       <div className="card-body wild">{renderFields(fields)}</div>
       <div className="card-footer p-5">

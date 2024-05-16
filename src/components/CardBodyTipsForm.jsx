@@ -32,15 +32,6 @@ const CardBodyTipsForm = ({ fields }) => {
 
   const date = new Date();
   const todaysDayName = date.toString().slice(0, 3);
-  const weekDays = [
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-    "Sunday",
-  ];
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -55,11 +46,10 @@ const CardBodyTipsForm = ({ fields }) => {
     e.preventDefault();
 
     const userDocRef = doc(db, "users", currentUser.uid);
-    console.log("update the collection", userDocRef);
 
     // Atomically add a new region to the "regions" array field.
     await updateDoc(userDocRef, {
-      tips: arrayUnion({ ...formState, ["createdAt"]: date }),
+      tips: arrayUnion({ ...formState, createdAt: date }),
     });
   };
 
@@ -76,7 +66,15 @@ const CardBodyTipsForm = ({ fields }) => {
   };
 
   useEffect(() => {
-    console.log(todaysDayName);
+    const weekDays = [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday",
+    ];
     for (let day of weekDays) {
       if (day.toString().slice(0, 3) === todaysDayName) {
         const name = "dayName";
@@ -88,7 +86,7 @@ const CardBodyTipsForm = ({ fields }) => {
         console.log("nope");
       }
     }
-  }, []); // No dependancies here as we do only want to set the "dayName" and date at first rendering
+  }, [todaysDayName, formState]); // No dependancies here as we do only want to set the "dayName" and date at first rendering
 
   useEffect(() => {
     const inconue = async () => {
@@ -107,24 +105,16 @@ const CardBodyTipsForm = ({ fields }) => {
         (array) => array.email === currentUser.email
       );
       setShowSaveButton(firstTime);
-
-      if (firstTime.length) {
-        console.log("lenght is not null", firstTime.length);
-        // setShowUpdate(true)
-      } else {
-        console.log("lenght is null", firstTime.length);
-        // setShowAddButton()
-      }
       // console.log("querySnapshot", querySnapshot);
     };
     inconue();
-  }, []);
+  }, [currentUser]);
 
   return (
     <div className="row you tips g-0" data-testid="card-body-tips-form">
       <form
         ref={form}
-        role="form"
+        // role="form"
         className="form px-5"
         onSubmit={
           showSaveButton.length ? updateTheCollection : createTheCollection
