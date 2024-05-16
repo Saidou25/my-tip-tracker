@@ -16,8 +16,6 @@ const Dashboard = () => {
   const [earnings, setEarnings] = useState([]);
   const [userTipsData, setUserTipsData] = useState([]);
 
-  // console.log(userTipsData);
-
   const currentUser = auth.currentUser;
 
   onAuthStateChanged(auth, (user) => {
@@ -29,19 +27,6 @@ const Dashboard = () => {
     }
   });
 
-  const inconue = async () => {
-    const querySnapshot = await getDocs(collection(db, "users"));
-    const dataArray = []; // Initialize an array to store the stringified objects
-    querySnapshot.forEach((doc) => {
-      const data = doc.data();
-      // console.log(`${doc.id} => ${JSON.stringify(data)}`);
-      dataArray.push(data); // Push the data object into the dataArray
-    });
-    console.log(dataArray);
-    // setEarnings(dataArray);
-    // console.log("querySnapshot", querySnapshot);
-  };
-
   const logout = () => {
     signOut(auth)
       .then(() => {
@@ -51,6 +36,22 @@ const Dashboard = () => {
         console.log("An error happened.", error.message);
       });
   };
+
+  useEffect(() => {
+    const inconue = async () => {
+      const querySnapshot = await getDocs(collection(db, "users"));
+      const dataArray = []; // Initialize an array to store the stringified objects
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        // console.log(`${doc.id} => ${JSON.stringify(data)}`);
+        dataArray.push(data); // Push the data object into the dataArray
+      });
+      console.log(dataArray);
+      setEarnings(dataArray);
+      // console.log("querySnapshot", querySnapshot);
+    };
+    inconue();
+  }, []);
 
   useEffect(() => {
     if (earnings) {
@@ -73,35 +74,16 @@ const Dashboard = () => {
       <Navbar />
       <div className="container-fluid g-0">
         <TitleBox firstname="Sy" />
-        {/* {userTipsData && <>{userTipsData}</>} */}
-        {/* {earnings &&
-          earnings?.map((earning, index) => (
-            <div key={index}>
-              <span>displayName: {earning.displayName}</span>
-              <br />
-              <br />
-              <span>email: {earning.email}</span>
-              <br />
-              <br />
-              <span>brut: {earning.TipsBrut}</span>
-              <br />
-              <br />
-              <span>net: {earning.TipsNet}</span>
-              <br />
-              <br />
-            </div>
-          ))}
-        <h1>Hehe</h1> */}
         <Card
           className="p-0 m-0 g-0"
           title="Dashboard title"
           footer="Dashboard footer"
-          cardBodyTemplate={dashboardData}
+          cardBodyTemplate={userTipsData}
         />
       </div>
-      <Button type="button" onClick={inconue}>
+      {/* <Button type="button" onClick={inconue}>
         inconue
-      </Button>
+      </Button> */}
     </div>
   );
 };

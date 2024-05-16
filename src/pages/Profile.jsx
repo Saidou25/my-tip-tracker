@@ -11,7 +11,6 @@ import "./Profile.css";
 
 const Profile = () => {
   const currentUser = auth.currentUser;
-  console.log("current user", currentUser);
 
   return (
     <div className="grad1">

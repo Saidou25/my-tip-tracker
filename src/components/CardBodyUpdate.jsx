@@ -8,6 +8,7 @@ import UpdateProfilePicture from "./UpdateProfilePicture";
 import Button from "./Button";
 
 import "./Card.css";
+import { useNavigate } from "react-router-dom";
 
 const CardBodyUpdate = ({ fields }) => {
   const [error, setError] = useState(false);
@@ -20,6 +21,8 @@ const CardBodyUpdate = ({ fields }) => {
 
   const form = useRef();
 
+  const navigate = useNavigate();
+  
   const currentUser = auth.currentUser;
 
   const handleChange = (e) => {
@@ -33,19 +36,19 @@ const CardBodyUpdate = ({ fields }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    updateProfile(auth.currentUser, {
-      displayName: formState.displayName,
-      photoURL: formState.photoURL,
-      createdAt: currentUser.metadata.creationTime,
-    })
-      .then(() => {
-        console.log("Profile updated!");
-      })
-      .catch((error) => {
-        console.log("An error occurred", error.message);
-        setError("Oops, something went wrong.");
+    try {
+      await updateProfile(auth.currentUser, {
+        displayName: formState.displayName,
+        photoURL: formState.photoURL,
+        createdAt: currentUser.metadata.creationTime,
       });
+    } catch (error) {
+      console.log("An error occurred", error.message);
+      setError("Oops, something went wrong.");
+    } finally {
+      console.log("profile updated!");
+      navigate("/profile");
+    }
   };
 
   const handleUrl = (storageRef) => {

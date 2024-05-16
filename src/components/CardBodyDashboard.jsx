@@ -3,16 +3,84 @@ import { GiCoins } from "react-icons/gi";
 import { titlesData } from "../data";
 
 import "./Card.css";
+import { useEffect, useState } from "react";
 
-const CardBodyDashboard = ({ fields }) => {
+const CardBodyDashboard = ({ cardBodyTemplate }) => {
   const titles = titlesData[0].titles;
-  
-  const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  const month = months[new Date().getMonth()]
+ const [lastTipInput, setLastTipInput] = useState({});
+
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  const monthTitle = months[new Date().getMonth()];
+
+  // console.log("fileds", cardBodyTemplate);
+  // const TableFields = cardBodyTemplate.tips;
+
+  // Check if cardBodyTemplate and cardBodyTemplate.tips are defined before proceeding
+  const TableFields =
+    cardBodyTemplate && cardBodyTemplate.tips ? cardBodyTemplate.tips : [];
+
+  if (TableFields.length > 0) {
+    // Iterate over each item in the 'tips' array
+    TableFields.forEach(function (tip) {
+      // Check if 'createdAt' exists and is not empty
+      if (tip.createdAt && tip.createdAt.seconds) {
+        // Create a new Date object
+        var date = new Date(
+          tip.createdAt.seconds * 1000 +
+            Math.round(tip.createdAt.nanoseconds / 1e6)
+        );
+
+        // Get the date components
+        var month = ("0" + (date.getMonth() + 1)).slice(-2); // Months are zero-based
+        var day = ("0" + date.getDate()).slice(-2);
+        var year = date.getFullYear();
+
+        // Format the date as MM/DD/YYYY
+        var formattedDate = month + "/" + day + "/" + year;
+
+        // Update the 'createdAt' field with the formatted date
+        tip.createdAt = formattedDate;
+      }
+    });
+  }
+
+  useEffect(() => {
+    if (cardBodyTemplate) {
+      console.log("card body template", cardBodyTemplate.tips);
+      const tips = cardBodyTemplate.tips;
+      if (tips) {
+      //  setLastTipInput(tips[tips.length - 1]); // Sets the fields value to the last user input
+      const lastUserTipInput = tips[tips.length - 1];
+      console.log("lastUserTipInput", lastUserTipInput.date)
+      }
+    }
+  }, [cardBodyTemplate]);
 
   return (
     <>
-    <h5 style={{ display: "flex", alignItems: "center", justifyContent: "center"}}>{month}</h5><br />
+      <h5
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        {monthTitle}
+      </h5>
+      <br />
       <table className="you g-0 m-0 p-0">
         <thead className="here">
           <tr className="trtr py-2">
@@ -22,24 +90,22 @@ const CardBodyDashboard = ({ fields }) => {
                   <span>{title}</span>
                 </th>
               ))}
-              
           </tr>
-          {fields &&
-            fields.map((field, index) => (
+          {TableFields &&
+            TableFields.map((field, index) => (
               <tr key={index} className="trtr">
                 <th className="hum-item">
-                  <span>{field.day}</span>
+                  <span>{field.dayName}</span>
                   <br />
-                  <span>{field.date}</span>
+                  <span>{field.createdAt.toString()}</span>
                 </th>
-                <th className="hum-item">{field.shift}</th>
                 <th>
                   <FaSackDollar className="hum-icon" />
-                  <span className="ps-3">{field.brut}</span>
+                  <span className="ps-3">{field.TipsBrut}</span>
                 </th>
                 <th>
                   <GiCoins className="hum-icon" />
-                  <span className="ps-3">{field.net}</span>
+                  <span className="ps-3">{field.TipsNet}</span>
                 </th>
               </tr>
             ))}
@@ -48,49 +114,6 @@ const CardBodyDashboard = ({ fields }) => {
       <br />
       <br />
       <br />
-      <div>
-        {" "}
-        <table className="you g-0 m-0 p-0">
-          <thead className="here">
-            <tr className="trtr py-2">
-              {/* {titlesData &&
-          titlesData.titles[0].map((title) => (
-          <th className="hum px-3">
-            <span>{title.date}</span>
-          </th>
-
-          ))}  */}
-              <th className="hum px-3">
-              <span>date</span>
-            </th>
-            <th className="hum">
-              <span>shift</span>
-            </th>
-            <th className="hum">brut</th>
-            <th className="hum">net</th>
-            </tr>
-            {fields &&
-              fields.map((field, index) => (
-                <tr key={index} className="trtr">
-                  <th className="hum-item px-3">
-                    <span>{field.day}</span>
-                    <br />
-                    <span>{field.date}</span>
-                  </th>
-                  <th className="hum-item">{field.shift}</th>
-                  <th>
-                    <FaSackDollar className="hum-icon" />
-                    <span className="ps-3">{field.brut}</span>
-                  </th>
-                  <th>
-                    <GiCoins className="hum-icon" />
-                    <span className="ps-3">{field.net}</span>
-                  </th>
-                </tr>
-              ))}
-          </thead>
-        </table>
-      </div>
     </>
   );
 };

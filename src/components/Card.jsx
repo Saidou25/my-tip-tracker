@@ -25,7 +25,7 @@ const Card = ({ title, cardBodyTemplate = {}, footer, src }) => {
       case "update":
         return <CardBodyUpdate fields={fields} src={src} />;
       default:
-        return <CardBodyDashboard fields={fields} />;
+        return <CardBodyDashboard fields={fields} cardBodyTemplate={cardBodyTemplate} />;
     }
   };
 

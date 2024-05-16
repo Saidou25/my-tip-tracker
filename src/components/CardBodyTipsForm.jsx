@@ -14,8 +14,12 @@ import {
 import Button from "./Button";
 
 import "./Card.css";
+import { useNavigate } from "react-router-dom";
 
 const CardBodyTipsForm = ({ fields }) => {
+  const date = new Date();
+  const todaysDayName = date.toString().slice(0, 3);
+
   const [showSaveButton, setShowSaveButton] = useState("");
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -24,14 +28,17 @@ const CardBodyTipsForm = ({ fields }) => {
     TipsNet: 0,
     createdAt: "",
     dayName: "",
+    date: date
   });
+
+  const navigate = useNavigate();
 
   const form = useRef();
 
   const currentUser = auth.currentUser;
 
-  const date = new Date();
-  const todaysDayName = date.toString().slice(0, 3);
+  // const date = new Date();
+  // const todaysDayName = date.toString().slice(0, 3);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -46,23 +53,35 @@ const CardBodyTipsForm = ({ fields }) => {
     e.preventDefault();
 
     const userDocRef = doc(db, "users", currentUser.uid);
+    try {
+      // Atomically add a new region to the "regions" array field.
+      await updateDoc(userDocRef, {
+        tips: arrayUnion({ ...formState, createdAt: date, date: date.toString() }),
 
-    // Atomically add a new region to the "regions" array field.
-    await updateDoc(userDocRef, {
-      tips: arrayUnion({ ...formState, createdAt: date }),
-    });
+      });
+    } catch (error) {
+      console.log(error.message);
+    } finally {
+      navigate("/dashboard");
+    }
   };
 
   const createTheCollection = async (e) => {
     e.preventDefault();
-
-    // Add a new document with currentUser's id for id.
-    await setDoc(doc(db, "users", currentUser.uid), {
-      displayName: currentUser.displayName,
-      email: currentUser.email,
-      photoURL: currentUser.photoURL,
-      tips: [formState],
-    });
+    try {
+      // Add a new document with currentUser's id for id.
+      await setDoc(doc(db, "users", currentUser.uid), {
+        displayName: currentUser.displayName,
+        email: currentUser.email,
+        photoURL: currentUser.photoURL,
+        tips: [formState],
+        date: date
+      });
+    } catch (error) {
+      console.log("error", error.message);
+    } finally {
+      navigate("/dashboard");
+    }
   };
 
   useEffect(() => {
@@ -75,15 +94,19 @@ const CardBodyTipsForm = ({ fields }) => {
       "Saturday",
       "Sunday",
     ];
+    if (!todaysDayName || !formState) {
+      console.log("nope");
+      return;
+    }
     for (let day of weekDays) {
       if (day.toString().slice(0, 3) === todaysDayName) {
         const name = "dayName";
-        setFormState({
-          ...formState,
-          [name]: day,
-        });
-      } else {
-        console.log("nope");
+        // Update formState only if the dayName doesn't exist
+        if (!formState[name])
+          setFormState({
+            ...formState,
+            [name]: day,
+          });
       }
     }
   }, [todaysDayName, formState]); // No dependancies here as we do only want to set the "dayName" and date at first rendering
@@ -98,13 +121,15 @@ const CardBodyTipsForm = ({ fields }) => {
         dataArray.push(data); // Push the data object into the dataArray
       });
 
-      // Filter to find out if currentUser already has stored tips.
-      // if yes the currentUser's tips need to be updated
-      // otherwise a new firebase "document" will be created
-      const firstTime = dataArray.filter(
-        (array) => array.email === currentUser.email
-      );
-      setShowSaveButton(firstTime);
+      if (currentUser) {
+        // Filter to find out if currentUser already has stored tips.
+        // if yes the currentUser's tips need to be updated
+        // otherwise a new firebase "document" will be created
+        const firstTime = dataArray.filter(
+          (array) => array.email === currentUser.email
+        );
+        setShowSaveButton(firstTime);
+      }
       // console.log("querySnapshot", querySnapshot);
     };
     inconue();

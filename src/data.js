@@ -21,35 +21,33 @@ const dashboardData = {
       day: "Monday",
       brut: 0,
       net: 0,
-      shift: "dinner",
     },
     {
       date: "02/23/2024",
       day: "Tuesday",
       brut: 0,
       net: 0,
-      shift: "dinner",
     },
     {
       date: "02/23/2024",
       day: "Wednesday",
       brut: 330,
       net: 242,
-      shift: "dinner",
+      
     },
     {
       date: "02/23/2024",
       day: "Thursday",
       brut: 350,
       net: 220,
-      shift: "dinner",
+      
     },
     {
       date: "02/23/2024",
       day: "Friday",
       brut: 400,
       net: 350,
-      shift: "dinner",
+      
     },
     {
       date: "02/23/2024",
@@ -94,7 +92,7 @@ const update = {
 
 const titlesData = [
   {
-    titles: ["today", "dinner", "tips(brut)", "tips(net)"],
+    titles: ["today", "tips(brut)", "tips(net)"],
   },
 ];
 export {
