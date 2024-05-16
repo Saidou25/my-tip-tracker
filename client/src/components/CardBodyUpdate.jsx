@@ -1,9 +1,8 @@
 import { FaSackDollar } from "react-icons/fa6";
 import { GiCoins } from "react-icons/gi";
-import { useEffect, useRef, useState } from "react";
-import { auth, storage } from "../firebase";
+import { useRef, useState } from "react";
+import { auth } from "../firebase";
 import { updateProfile } from "firebase/auth";
-// import { getDownloadURL, ref } from "firebase/storage";
 
 import UpdateProfilePicture from "./UpdateProfilePicture";
 import Button from "./Button";

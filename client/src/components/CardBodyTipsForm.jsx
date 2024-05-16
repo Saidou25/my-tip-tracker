@@ -1,10 +1,8 @@
 import { FaSackDollar } from "react-icons/fa6";
 import { GiCoins } from "react-icons/gi";
 import { useEffect, useRef, useState } from "react";
-import { updateProfile } from "firebase/auth";
-import { auth, db, storage } from "../firebase";
+import { auth, db } from "../firebase";
 import {
-  addDoc,
   arrayUnion,
   collection,
   doc,
@@ -55,7 +53,7 @@ const CardBodyTipsForm = ({ fields }) => {
 
   const updateTheCollection = async (e) => {
     e.preventDefault();
-    // console.log("form state", formState)
+
     const userDocRef = doc(db, "users", currentUser.uid);
     console.log("update the collection", userDocRef);
 
@@ -67,7 +65,6 @@ const CardBodyTipsForm = ({ fields }) => {
 
   const createTheCollection = async (e) => {
     e.preventDefault();
-    // console.log("create the collection", formState);
 
     // Add a new document with currentUser's id for id.
     await setDoc(doc(db, "users", currentUser.uid), {
@@ -76,7 +73,6 @@ const CardBodyTipsForm = ({ fields }) => {
       photoURL: currentUser.photoURL,
       tips: [formState],
     });
-    // console.log("Document written with ID:", currentUser.uid);
   };
 
   useEffect(() => {
@@ -103,7 +99,7 @@ const CardBodyTipsForm = ({ fields }) => {
         // console.log(`${doc.id} => ${JSON.stringify(data)}`);
         dataArray.push(data); // Push the data object into the dataArray
       });
-      // console.log(dataArray);
+
       // Filter to find out if currentUser already has stored tips.
       // if yes the currentUser's tips need to be updated
       // otherwise a new firebase "document" will be created
@@ -111,7 +107,7 @@ const CardBodyTipsForm = ({ fields }) => {
         (array) => array.email === currentUser.email
       );
       setShowSaveButton(firstTime);
-      // console.log("firstime", firstTime.length);
+
       if (firstTime.length) {
         console.log("lenght is not null", firstTime.length);
         // setShowUpdate(true)
@@ -119,7 +115,6 @@ const CardBodyTipsForm = ({ fields }) => {
         console.log("lenght is null", firstTime.length);
         // setShowAddButton()
       }
-      // setEarnings(dataArray);
       // console.log("querySnapshot", querySnapshot);
     };
     inconue();
@@ -134,7 +129,6 @@ const CardBodyTipsForm = ({ fields }) => {
         onSubmit={
           showSaveButton.length ? updateTheCollection : createTheCollection
         }
-        // onSubmit={createTheCollection}
       >
         <br />
         {fields &&
@@ -177,7 +171,7 @@ const CardBodyTipsForm = ({ fields }) => {
                 name={field.label}
                 onKeyDown={(evt) =>
                   ["e", "E", "+", "-"].includes(evt.key) && evt.preventDefault()
-                }
+                } // Prevents these keyboard keys to be inactive
               />
               <br />
               <br />

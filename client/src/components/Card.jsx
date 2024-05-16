@@ -32,7 +32,6 @@ const Card = ({ title, cardBodyTemplate = {}, footer, src }) => {
   return (
     <div className="card main-card bg-transparent" role="card">
       <div className="card-title p-5">{title}</div>
-      {/* Look into <CardBody renderFields={renderFields(fields)} /> */}
       <div className="card-body wild">{renderFields(fields)}</div>
       <div className="card-footer p-5">
         {window.location.pathname === "/profile" ? (

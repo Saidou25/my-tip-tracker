@@ -89,9 +89,7 @@ const tipsForm = {
 
 const update = {
   templateTitle: "update",
-  fields: [
-    { type: "text", label: "displayName", placeholder: "display name" },
-  ],
+  fields: [{ type: "text", label: "displayName", placeholder: "display name" }],
 };
 
 const titlesData = [
@@ -99,4 +97,12 @@ const titlesData = [
     titles: ["today", "dinner", "tips(brut)", "tips(net)"],
   },
 ];
-export { dashboardData, profile, tipsForm, titlesData, signupData, loginData, update };
+export {
+  dashboardData,
+  profile,
+  tipsForm,
+  titlesData,
+  signupData,
+  loginData,
+  update,
+};
