@@ -1,13 +1,13 @@
+import { useEffect } from "react";
 import { FaSackDollar } from "react-icons/fa6";
 import { GiCoins } from "react-icons/gi";
 import { titlesData } from "../data";
 
 import "./Card.css";
-import { useEffect, useState } from "react";
 
 const CardBodyDashboard = ({ cardBodyTemplate }) => {
   const titles = titlesData[0].titles;
- const [lastTipInput, setLastTipInput] = useState({});
+//  const [lastTipInput, setLastTipInput] = useState({});
 
   const months = [
     "January",
@@ -64,7 +64,10 @@ const CardBodyDashboard = ({ cardBodyTemplate }) => {
       if (tips) {
       //  setLastTipInput(tips[tips.length - 1]); // Sets the fields value to the last user input
       const lastUserTipInput = tips[tips.length - 1];
-      console.log("lastUserTipInput", lastUserTipInput.date)
+      console.log("lastUserTipInput", lastUserTipInput.date);
+      // if (lastUserTipInput < date) {
+        
+      // }
       }
     }
   }, [cardBodyTemplate]);
